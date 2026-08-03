@@ -60,7 +60,6 @@ st.markdown(
     }}
     </style>
     """,
-    unsafe_allow_allow_html=True,
     unsafe_allow_html=True
 )
 
@@ -147,7 +146,7 @@ with col2:
         options=["Young Adult (18 - 29)", "Adult (30 - 44)", "Middle Aged (45 - 59)", "Senior (60+)"]
     )
 
-# Mapping Categorical selections to approximate numerical midpoints required by model
+# Mapping Categorical selections to approximate numerical values expected by model
 preg_map = {"None (0)": 0, "1 to 2": 1, "3 to 5": 4, "More than 5": 7}
 glucose_map = {
     "Normal (< 100 mg/dL)": 85.0,
@@ -191,7 +190,7 @@ st.markdown("---")
 
 # Prediction action
 if st.button("🔍 Analyze Risk Profile", type="primary", use_container_width=True):
-    # Construct input dataframe using expected features
+    # Construct input dataframe matching exact model feature structure
     input_data = pd.DataFrame([{
         "Pregnancies": preg_map[preg_cat],
         "Glucose": glucose_map[glucose_cat],
